@@ -1,12 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const db = require("./models");
+require('dotenv').config();
+const express = require('express');
+const db = require('./models');
+
 const app = express();
-const PORT = process.env.PORT;
+const { PORT } = process.env;
 
-const authorRouter = require("./routes/authorRouter");
+const authorRouter = require('./routes/authorRouter');
 
-app.use("/author", authorRouter);
+app.use('/author', authorRouter);
 
 async function init() {
   await db.sequelize.sync();
