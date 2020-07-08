@@ -15,6 +15,11 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: 'SET NULL',
       onUpdate: 'CASCADE'
     });
+
+    Post.belongsTo(models.Category, {
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE'
+    });
   };
 
   return Post;
