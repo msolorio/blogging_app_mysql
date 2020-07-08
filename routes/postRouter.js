@@ -6,10 +6,24 @@ const getUpdateObject = require('../utils/getUpdateObject');
 
 // GET 10 MOST RECENT POSTS
 postRouter.get('/', async (request, response) => {
-  const mostRecentPosts = await db.Post.findAll({
+  const queryObject = {
     limit: 10,
-    order: [['createdAt', 'DESC']]
-  });
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: db.Author,
+      attributes: ['firstName', 'lastName']
+    },
+    {
+      model: db.Category,
+      attributes: ['name']
+    }],
+    where: {}
+  };
+
+  if (request.query.CategoryId) queryObject.where.CategoryId = request.query.CategoryId;
+  if (request.query.AuthorId) queryObject.where.AuthorId = request.query.AuthorId;
+
+  const mostRecentPosts = await db.Post.findAll(queryObject);
 
   response.status(200).json({ mostRecentPosts });
 });

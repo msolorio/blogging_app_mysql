@@ -21,8 +21,8 @@ authorRouter.get('/:authorId', async (request, response) => {
 // ADD AN AUTHOR
 authorRouter.post('/', async (request, response) => {
   const addedAuthor = await db.Author.create({
-    first_name: request.body.first_name,
-    last_name: request.body.last_name
+    firstName: request.body.firstName,
+    lastName: request.body.lastName
   });
 
   response.status(201).json({ addedAuthor });
