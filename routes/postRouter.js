@@ -40,11 +40,11 @@ postRouter.post('/', async (request, response) => {
 });
 
 // UPDATE A POST BY ID
-postRouter.put('/', async (request, response) => {
+postRouter.put('/:postId', async (request, response) => {
   const paramsToCheck = ['title', 'content', 'AuthorId'];
   const updateObject = getUpdateObject(request.body, paramsToCheck);
 
-  await db.Post.update(updateObject, { where: { id: request.body.id } });
+  await db.Post.update(updateObject, { where: { id: request.params.postId } });
 
   response.status(200).end();
 });

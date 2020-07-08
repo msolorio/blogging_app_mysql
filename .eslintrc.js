@@ -18,6 +18,7 @@ module.exports = {
       named: 'never',
       asyncArrow: 'always'
     }],
+    camelcase: ['error', { properties: 'never' }],
     'no-param-reassign': ['error', { props: false }]
   }
 };

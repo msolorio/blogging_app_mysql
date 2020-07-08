@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: 'SET NULL',
       onUpdate: 'CASCADE'
     });
+
+    Post.belongsToMany(models.Tag, {
+      through: 'Tag_Post'
+    });
   };
 
   return Post;
