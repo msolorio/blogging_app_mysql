@@ -8,7 +8,7 @@
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
-  "author": "",
+  "author": "Michael Solorio",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
