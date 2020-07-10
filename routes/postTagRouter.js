@@ -2,7 +2,6 @@ const express = require('express');
 
 const postTagRouter = express.Router({ mergeParams: true });
 const db = require('../models');
-// const getUpdateObject = require('../utils/getUpdateObject');
 
 // ADD A TAG TO A POST
 postTagRouter.post('/:tagId', async (request, response) => {
