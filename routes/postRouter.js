@@ -3,6 +3,9 @@ const express = require('express');
 const postRouter = express.Router();
 const db = require('../models');
 const getUpdateObject = require('../utils/getUpdateObject');
+const postTagRouter = require('./postTagRouter');
+
+postRouter.use('/:postId/tags', postTagRouter);
 
 // GET 10 MOST RECENT POSTS
 postRouter.get('/', async (request, response) => {
@@ -16,6 +19,10 @@ postRouter.get('/', async (request, response) => {
     {
       model: db.Category,
       attributes: ['name']
+    },
+    {
+      model: db.Tag,
+      attributes: ['name', 'id']
     }],
     where: {}
   };

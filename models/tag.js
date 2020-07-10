@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
 
   Tag.associate = function(models) {
     Tag.belongsToMany(models.Post, {
-      through: 'Tag_Post'
+      through: 'Tag_Post',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
     });
   };
 
