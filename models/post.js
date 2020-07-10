@@ -22,7 +22,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Post.belongsToMany(models.Tag, {
-      through: 'Tag_Post'
+      through: 'Tag_Post',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
     });
   };
 
